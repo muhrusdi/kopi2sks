@@ -1,15 +1,23 @@
 import React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
+import SEO from "Components/seo"
+// import { useStaticQuery, graphql } from "gatsby"
 
 const Layout = ({children}) => {
+
   return (
     <>
-    <h1>Header</h1>
+      <SEO/>
       <div>
         {children}
       </div>
     </>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout
