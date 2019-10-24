@@ -4,16 +4,16 @@ const path = require('path')
 const Dotenv = require('dotenv-webpack')
 
 const aliases = {
-  Containers: path.resolve(__dirname, "src/containers"),
-  Components: path.resolve(__dirname, "src/components"),
-  Templates: path.resolve(__dirname, "src/templates"),
-  Images: path.resolve(__dirname, "src/images"),
-  Utils: path.resolve(__dirname, "src/components/utilities"),
-  Layout: path.resolve(__dirname, "src/containers/layouts"),
-  Hocs: path.resolve(__dirname, "src/hocs"),
-  Hooks: path.resolve(__dirname, "src/hooks"),
-  Contexts: path.resolve(__dirname, "src/contexts"),
-  Config: path.resolve(__dirname, "config"),
+  containers: path.resolve(__dirname, "src/containers"),
+  components: path.resolve(__dirname, "src/components"),
+  templates: path.resolve(__dirname, "src/templates"),
+  images: path.resolve(__dirname, "src/images"),
+  utils: path.resolve(__dirname, "src/components/utils"),
+  layout: path.resolve(__dirname, "src/containers/layouts"),
+  hocs: path.resolve(__dirname, "src/hocs"),
+  hooks: path.resolve(__dirname, "src/hooks"),
+  contexts: path.resolve(__dirname, "src/contexts"),
+  config: path.resolve(__dirname, "config"),
 }
 
 

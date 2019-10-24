@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import SEO from "Components/seo"
+import SEO from "components/seo"
 // import { useStaticQuery, graphql } from "gatsby"
 
 const Layout = ({children}) => {
