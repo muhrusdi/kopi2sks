@@ -1,59 +1,168 @@
+/**
+ * SEO component that queries for data with
+ *  Gatsby's useStaticQuery React hook
+ *
+ * See: https://www.gatsbyjs.org/docs/use-static-query/
+ */
+
 import React from "react"
-import { Helmet } from "react-helmet"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({title, description, pathname, image}) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-          description
-          author
-          twitter
-          siteUrl
+const SEO = ({ description, lang = "id", meta, title, image, type = "website", url = "/" }) => {
+  const { site, imgThumb } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            author
+            siteUrl
+          }
         }
-      }
-      logo: file(relativePath: { eq: "logo.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 518) {
-            ...GatsbyImageSharpFluid
+        imgThumb: file(relativePath: {eq: "logo.png"}) {
+          childImageSharp {
+            fluid {
+              src
+            }
           }
         }
       }
+    `
+  )
+
+  const metaTitle = title ? title : site.siteMetadata.title
+  const metaDescription = description || site.siteMetadata.description
+  const ogImage = image ? image : site.siteMetadata.siteUrl + imgThumb.childImageSharp.fluid.src
+
+  const schemaOrgJSONLD = [
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      url: url,
+      name: title ? title : site.siteMetadata.title,
+      alternateName: ""
     }
-  `)
+  ]
 
-  const { siteUrl, twitter } = data.site.siteMetadata
-
-  const metaTitle = title || data.site.siteMetadata.title
-  const metaDescription = description || data.site.siteMetadata.description
-  const metaImage = image ? image : data.logo.childImageSharp.src
+  if (type === "article") {
+    schemaOrgJSONLD.push(
+      {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            item: {
+              "@id": url,
+              name: title ? title : site.siteMetadata.title,
+              image: ogImage
+            }
+          }
+        ]
+      },
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        url: url,
+        name: title ? title : site.siteMetadata.title,
+        alternateName: "",
+        headline: title ? title : site.siteMetadata.title,
+        image: {
+          "@type": "ImageObject",
+          url: ogImage
+        },
+        description: metaDescription
+      }
+    );
+  }
 
   return (
-    <Helmet defer={false} defaultTitle={metaTitle} titleTemplate={`${metaTitle} - %s`}>
-      <html lang="en" />
-      <link rel="canonical" href={`${siteUrl}${pathname}`} />
-      <title lang="id">{metaTitle}</title>
-      <meta name="description" content={metaDescription} />
-      <meta name="docsearch:version" content="2.0" />
-      <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
-      />
-
-      <meta property="og:url" content={siteUrl} />
-      <meta property="og:type" content="website" />
-      <meta property="og:locale" content="id" />
-      <meta property="og:site_name" content={metaTitle} />
-      <meta property="og:image" content={`${siteUrl}${metaImage}`} />
-      <meta property="og:image:width" content="512" />
-      <meta property="og:image:height" content="512" />
-
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content={twitter} />
+    <Helmet
+      htmlAttributes={{
+        lang,
+      }}
+      title={metaTitle}
+      meta={[
+        {
+          name: `title`,
+          content: metaTitle,
+        },
+        {
+          name: `description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:title`,
+          content: metaTitle,
+        },
+        {
+          property: `og:description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:type`,
+          content: type,
+        },
+        {
+          property: `og:image`,
+          content: ogImage,
+        },
+        {
+          property: `og:image:alt`,
+          content: metaTitle,
+        },
+        {
+          property: 'og:image:width',
+          content: 1648,
+        },
+        {
+          property: 'og:image:height',
+          content: 863,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:image`,
+          content: ogImage,
+        },
+        {
+          name: `twitter:creator`,
+          content: site.siteMetadata.author,
+        },
+        {
+          name: `twitter:title`,
+          content: title,
+        },
+        {
+          name: `twitter:description`,
+          content: metaDescription,
+        },
+      ].concat(meta)}
+    >
+      <script type="application/ld+json">
+        {JSON.stringify(schemaOrgJSONLD)}
+      </script>
     </Helmet>
   )
 }
 
-export default SEO;
+SEO.defaultProps = {
+  lang: `en`,
+  meta: [],
+  description: ``,
+}
+
+SEO.propTypes = {
+  description: PropTypes.string,
+  lang: PropTypes.string,
+  meta: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string,
+}
+
+export default SEO
