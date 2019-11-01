@@ -6,6 +6,7 @@
   "author": "muhrusdi.com",
   "dependencies": {
     "antd": "^3.24.3",
+    "framer-motion": "^1.6.15",
     "gatsby": "^2.17.7",
     "gatsby-image": "^2.2.30",
     "gatsby-plugin-antd": "^2.0.2",
