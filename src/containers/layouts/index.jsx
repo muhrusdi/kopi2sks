@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import { SEO } from "components"
+import { SEO, Container } from "components"
 // import { useStaticQuery, graphql } from "gatsby"
 
 const Layout = ({children}) => {
@@ -9,9 +9,9 @@ const Layout = ({children}) => {
   return (
     <>
       <SEO/>
-      <div>
+      <Container>
         {children}
-      </div>
+      </Container>
     </>
   )
 }

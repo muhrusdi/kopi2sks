@@ -2,8 +2,8 @@ const modifyVars = require("./src/utils/modify-vars");
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Kopi 2 sks`,
+    description: `Minuman kuliah wajib buat kamu yang selalu berharap wisudah`,
     author: `@muhrusdiid`,
     siteUrl: "https://muhrusdi.com",
     twitter: "@muhrusdiid"
@@ -56,7 +56,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#333`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
