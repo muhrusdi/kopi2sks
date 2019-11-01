@@ -1,3 +1,5 @@
+const modifyVars = require("./src/utils/modify-vars");
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -21,6 +23,21 @@ module.exports = {
         options: {
           // Add any options here
       },
+    },
+    {
+    resolve: `gatsby-plugin-less`,
+      options: {
+        modifyVars: modifyVars,
+        javascriptEnabled: true,
+      },
+    },
+    'gatsby-plugin-antd',
+    {
+      resolve: 'gatsby-plugin-import',
+      options: {
+        libraryName: "antd",
+        style: true,
+      }
     },
     {
       resolve: `gatsby-plugin-sharp`,
