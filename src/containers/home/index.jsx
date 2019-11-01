@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { motion } from "framer-motion"
+import { Container } from "components"
 
 const ContentWrap = styled.div`
 
@@ -48,56 +49,58 @@ const Home = () => {
   `)
 
   return (
-    <ContentWrap>
-      <ContentInner>
-        <div>
-          <Img css={`
-            max-width: 318px;
-            margin: 0 auto;
-          `} fluid={data.logo.childImageSharp.fluid}/>
-          <div css={`
-            margin-top: 80px;
-          `}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <Img css={`
-                max-width: 518px;
-                margin: 0 auto;
-              `} fluid={data.tagLine.childImageSharp.fluid}/>
-            </motion.div>
+    <Container>
+      <ContentWrap>
+        <ContentInner>
+          <div>
+            <Img css={`
+              max-width: 318px;
+              margin: 0 auto;
+            `} fluid={data.logo.childImageSharp.fluid}/>
+            <div css={`
+              margin-top: 80px;
+            `}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                <Img css={`
+                  max-width: 518px;
+                  margin: 0 auto;
+                `} fluid={data.tagLine.childImageSharp.fluid}/>
+              </motion.div>
+            </div>
+            <ul css={`
+              list-style: none;
+              display: flex;
+              padding: 0;
+              margin: 0;
+              justify-content: center;
+              margin-top: 70px;
+              & > li {
+                padding: 0 10px;
+              }
+            `}>
+              <li>
+                <a href="#">
+                  <Img css={`
+                    width: 56px;
+                  `} fluid={data.ig.childImageSharp.fluid}/>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <Img css={`
+                    width: 56px;
+                  `} fluid={data.medium.childImageSharp.fluid}/>
+                </a>
+              </li>
+            </ul>
           </div>
-          <ul css={`
-            list-style: none;
-            display: flex;
-            padding: 0;
-            margin: 0;
-            justify-content: center;
-            margin-top: 70px;
-            & > li {
-              padding: 0 10px;
-            }
-          `}>
-            <li>
-              <a href="#">
-                <Img css={`
-                  width: 56px;
-                `} fluid={data.ig.childImageSharp.fluid}/>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <Img css={`
-                  width: 56px;
-                `} fluid={data.medium.childImageSharp.fluid}/>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </ContentInner>
-    </ContentWrap>
+        </ContentInner>
+      </ContentWrap>
+    </Container>
   )
 }
 
