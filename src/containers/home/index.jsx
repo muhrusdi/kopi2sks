@@ -83,14 +83,14 @@ const Home = () => {
               }
             `}>
               <li>
-                <a href="#">
+                <a href="https://www.instagram.com/kopi2sks/" target="_blank">
                   <Img css={`
                     width: 56px;
                   `} fluid={data.ig.childImageSharp.fluid}/>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://medium.com/kopi2sks" target="_blank">
                   <Img css={`
                     width: 56px;
                   `} fluid={data.medium.childImageSharp.fluid}/>
