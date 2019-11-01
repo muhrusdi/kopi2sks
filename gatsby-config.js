@@ -5,7 +5,7 @@ module.exports = {
     title: `Kopi 2 sks`,
     description: `Minuman kuliah wajib buat kamu yang selalu berharap wisudah`,
     author: `@muhrusdiid`,
-    siteUrl: "https://muhrusdi.com",
+    siteUrl: "https://kopi2sks.com",
     twitter: "@muhrusdiid"
   },
   plugins: [
