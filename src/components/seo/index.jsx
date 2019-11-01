@@ -45,3 +45,5 @@ const SEO = ({title, description, pathname}) => {
     </Helmet>
   )
 }
+
+export default SEO;

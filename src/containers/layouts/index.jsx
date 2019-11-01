@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import SEO from "components/seo"
+import { SEO } from "components"
 // import { useStaticQuery, graphql } from "gatsby"
 
 const Layout = ({children}) => {
@@ -16,8 +16,8 @@ const Layout = ({children}) => {
   )
 }
 
+export default Layout;
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
-
-export default Layout
