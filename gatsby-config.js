@@ -18,10 +18,18 @@ module.exports = {
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // Add any options here
+        options: {
+          // Add any options here
+      },
     },
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 75,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
