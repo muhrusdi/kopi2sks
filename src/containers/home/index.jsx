@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { motion } from "framer-motion"
-import { Container } from "components"
+import Layout from "containers/layouts"
 
 const ContentWrap = styled.div`
 
@@ -49,7 +49,7 @@ const Home = () => {
   `)
 
   return (
-    <Container>
+    <Layout>
       <ContentWrap>
         <ContentInner>
           <div>
@@ -100,7 +100,7 @@ const Home = () => {
           </div>
         </ContentInner>
       </ContentWrap>
-    </Container>
+    </Layout>
   )
 }
 
